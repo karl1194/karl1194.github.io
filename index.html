@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jaspher Carl Bien — Website Security Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a222d;
+      --surface2: #232d3b;
+      --accent: #5eead4;
+      --accent-dim: #2dd4bf;
+      --accent2: #e8b86d;
+      --text: #e6edf3;
+      --muted: #8b9cb3;
+      --highlight: rgba(94, 234, 212, 0.1);
+      --border: rgba(94, 234, 212, 0.22);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+    header.hero {
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+      background: radial-gradient(ellipse 90% 70% at 50% -30%, rgba(45, 212, 191, 0.15), transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.85rem, 5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #f0fdfa, #5eead4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .title {
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 600;
+      max-width: 36rem;
+      margin: 0 auto 1.25rem;
+      line-height: 1.45;
+    }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .contact a, .contact span {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.9rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact a:hover {
+      border-color: var(--accent);
+      background: var(--highlight);
+    }
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    section { margin-bottom: 2.5rem; }
+    section h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.28rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 2px solid var(--border);
+      display: inline-block;
+    }
+    .summary {
+      font-size: 1.02rem;
+      color: var(--muted);
+      background: var(--surface);
+      padding: 1.35rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      line-height: 1.75;
+    }
+    .summary strong { color: var(--text); }
+    .skill-group { margin-bottom: 1.35rem; }
+    .skill-group h3 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent2);
+      margin-bottom: 0.55rem;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .skills span {
+      padding: 0.35rem 0.75rem;
+      background: var(--highlight);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+    .job {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 1.15rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .job::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-dim));
+    }
+    .job h3 { font-size: 1.08rem; color: var(--text); margin-bottom: 0.25rem; }
+    .job .meta {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+    .job ul { margin-left: 1.1rem; color: var(--muted); }
+    .job li { margin-bottom: 0.45rem; }
+    .job li::marker { color: var(--accent-dim); }
+    .achievements {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .achievements li {
+      list-style: none;
+      padding: 0.85rem 1rem 0.85rem 2.75rem;
+      background: var(--surface);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      position: relative;
+      color: var(--muted);
+    }
+    .achievements li::before {
+      content: "✓";
+      position: absolute;
+      left: 1rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .edu-block {
+      background: var(--surface);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .edu-block h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+    .edu-block p { color: var(--muted); font-size: 0.95rem; }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+    }
+    @media print {
+      body { background: #fff; color: #111; }
+      .hero h1 { -webkit-text-fill-color: #0d4f47; color: #0d4f47; background: none; }
+      .hero .title, section h2, .job .meta { color: #0d4f47; }
+      .job, .summary, .edu-block, .achievements li { border-color: #ccc; }
+      .contact a, .contact span { border-color: #ddd; color: #111; }
+    }
+  </style>
+</head>
+<body>
+  <script id="cv-data" type="application/json">
+  {
+    "name": "Jaspher Carl Bien",
+    "title": "Website Security Analyst | Malware Remediation | PHP & WordPress Security",
+    "contact": {
+      "email": "chitogel194@gmail.com",
+      "phone": "+63 929 439 5104",
+      "location": "Mandaluyong City, Philippines",
+      "linkedin": "https://www.linkedin.com/in/karl0437"
+    },
+    "summary": "Website Security Remediation Analyst with 2+ years of hands-on experience in malware removal, web attack mitigation, and hosting-level troubleshooting. Strong background in PHP, JavaScript, WordPress security, and Linux-based hosting environments. Experienced in analyzing obfuscated malware, creating detection reports for engineering teams, and improving automated security signatures. Proactive, detail-oriented, and comfortable working in fast-paced, deadline-driven environments.",
+    "skillGroups": [
+      { "label": "Languages & Scripting", "items": ["PHP (3+ years)", "JavaScript (3+ years)", "PCRE (Regular Expressions)", "Bash basics"] },
+      { "label": "Security & Malware Analysis", "items": ["Website Malware Cleanup", "PHP Deobfuscation", "JavaScript Deobfuscation", "Backdoor Detection", "Web Shell Analysis", "Signature-Based Detection", "Incident Response"] },
+      { "label": "Web & Application Security", "items": ["SQL Injection (SQLi)", "Cross-Site Scripting (XSS)", "File Inclusion (LFI/RFI)", "Brute Force Attacks", "Malware Reinfection Vectors", "Browser-Based Attacks & Mitigation"] },
+      { "label": "CMS & Platforms", "items": ["WordPress (2+ years)", "Joomla", "Drupal"] },
+      { "label": "Hosting & Infrastructure", "items": ["Linux/UNIX", "Apache", "NGINX (fundamentals)", "cPanel", "WHM", "Plesk", "VPS & Shared Hosting Architecture", "DNS (MX, SPF, DKIM, DMARC)", "SSL Management"] },
+      { "label": "Tools", "items": ["JIRA", "SSH", "File Managers", "Log Analysis", "cPanel Terminal"] }
+    ],
+    "experience": [
+      {
+        "role": "Website Security Remediation Analyst",
+        "company": "GoDaddy",
+        "dates": "Feb 2024 – Present | Philippines",
+        "bullets": [
+          "Scan and analyze 20–30 compromised websites daily across WordPress, Joomla, and Drupal",
+          "Identify new or undetected malware patterns and submit 3–4 JIRA tickets weekly to engineering for signature development",
+          "Contributed to improved automated malware detection by documenting new infection patterns",
+          "Perform manual malware removal including PHP and JavaScript deobfuscation",
+          "Detect backdoors, web shells, malicious injections, and database compromises",
+          "Use advanced regular expressions (PCRE) to locate obfuscated payloads and suspicious code fragments",
+          "Investigate reinfection vectors and implement hardening measures",
+          "Analyze hosting environments (shared/VPS) to identify root cause of compromise",
+          "Provide mitigation recommendations for web application and browser-based attacks"
+        ]
+      },
+      {
+        "role": "Web Hosting Support Specialist",
+        "company": "GoDaddy",
+        "dates": "Mar 2023 – Feb 2024 | Philippines",
+        "bullets": [
+          "Supported shared, VPS, and dedicated hosting infrastructures",
+          "Troubleshot Apache errors (403, 404, 500, 503) and database connection issues",
+          "Configured and secured WordPress environments, resolving plugin/theme vulnerabilities",
+          "Managed DNS configurations and email authentication (SPF, DKIM, DMARC)",
+          "Installed and validated SSL certificates and HTTPS configurations",
+          "Assisted customers with server-level troubleshooting using Linux command line"
+        ]
+      }
+    ],
+    "achievements": [
+      "Improved malware detection coverage by proactively reporting undetected threats to engineering",
+      "Maintained high-volume workload handling 20–30 infected sites daily without SLA breaches",
+      "Reduced reinfection rates by implementing proper file permission and security hardening practices",
+      "Recognized for strong analytical skills and ability to independently resolve complex security incidents"
+    ],
+    "education": [
+      {
+        "degree": "Associate in Computer Technology",
+        "school": "ACLC College of Sorsogon",
+        "year": ""
+      }
+    ]
+  }
+  </script>
+
+  <header class="hero" id="top"></header>
+
+  <main>
+    <section aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Professional summary</h2>
+      <p class="summary" id="summary"></p>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Technical skills</h2>
+      <div id="skill-groups"></div>
+    </section>
+
+    <section aria-labelledby="exp-heading">
+      <h2 id="exp-heading">Professional experience</h2>
+      <div id="experience"></div>
+    </section>
+
+    <section aria-labelledby="ach-heading">
+      <h2 id="ach-heading">Key achievements</h2>
+      <ul class="achievements" id="achievements"></ul>
+    </section>
+
+    <section aria-labelledby="edu-heading">
+      <h2 id="edu-heading">Education</h2>
+      <div id="education"></div>
+    </section>
+  </main>
+
+  <footer>
+    Jaspher Carl Bien — Website Security Analyst
+  </footer>
+
+  <script>
+    (function () {
+      var el = document.getElementById("cv-data");
+      var data = JSON.parse(el.textContent.trim());
+      var c = data.contact || {};
+
+      document.querySelector("header.hero").innerHTML =
+        "<h1>" + escapeHtml(data.name) + "</h1>" +
+        "<p class=\"title\">" + escapeHtml(data.title) + "</p>" +
+        "<div class=\"contact\">" +
+        "<span>" + escapeHtml(c.location) + "</span>" +
+        "<a href=\"mailto:" + escapeAttr(c.email) + "\">" + escapeHtml(c.email) + "</a>" +
+        "<span>" + escapeHtml(c.phone) + "</span>" +
+        (c.linkedin ? "<a href=\"" + escapeAttr(c.linkedin) + "\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>" : "") +
+        "</div>";
+
+      document.getElementById("summary").innerHTML = boldKeywords(data.summary || "");
+
+      var sg = document.getElementById("skill-groups");
+      (data.skillGroups || []).forEach(function (g) {
+        var spans = (g.items || []).map(function (s) {
+          return "<span>" + escapeHtml(s) + "</span>";
+        }).join("");
+        sg.innerHTML += "<div class=\"skill-group\"><h3>" + escapeHtml(g.label) + "</h3><div class=\"skills\">" + spans + "</div></div>";
+      });
+
+      var expEl = document.getElementById("experience");
+      (data.experience || []).forEach(function (job) {
+        var ul = (job.bullets || []).map(function (b) {
+          return "<li>" + escapeHtml(b) + "</li>";
+        }).join("");
+        expEl.innerHTML +=
+          "<article class=\"job\">" +
+          "<h3>" + escapeHtml(job.role) + "</h3>" +
+          "<div class=\"meta\">" + escapeHtml(job.company) + " · " + escapeHtml(job.dates) + "</div>" +
+          "<ul>" + ul + "</ul>" +
+          "</article>";
+      });
+
+      var achEl = document.getElementById("achievements");
+      (data.achievements || []).forEach(function (a) {
+        achEl.innerHTML += "<li>" + escapeHtml(a) + "</li>";
+      });
+
+      var eduEl = document.getElementById("education");
+      (data.education || []).forEach(function (e) {
+        eduEl.innerHTML +=
+          "<div class=\"edu-block\">" +
+          "<h3>" + escapeHtml(e.degree) + "</h3>" +
+          "<p>" + escapeHtml(e.school) + (e.year ? " · " + escapeHtml(e.year) : "") + "</p>" +
+          "</div>";
+      });
+
+      function escapeHtml(s) {
+        if (!s) return "";
+        var d = document.createElement("div");
+        d.textContent = s;
+        return d.innerHTML;
+      }
+      function escapeAttr(s) {
+        return String(s).replace(/"/g, "&quot;");
+      }
+      function boldKeywords(text) {
+        var escaped = escapeHtml(text);
+        var patterns = [
+          /(\d+\+?\s*years?)/gi,
+          /(PHP|JavaScript|WordPress|Linux|PCRE|malware|JIRA)/gi
+        ];
+        patterns.forEach(function (re) {
+          escaped = escaped.replace(re, "<strong>$1</strong>");
+        });
+        return escaped;
+      }
+    })();
+  </script>
+</body>
+</html>
